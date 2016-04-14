@@ -13,7 +13,6 @@ for filename in os.listdir('.'):
     if not (filename.endswith('.png') or filename.endswith('.jpg')) \
        or filename == LOGO_FILENAME:
         continue # skip non-image files and the logo  file itself
-
     im = Image.open(filename)
     width, height = im.size
 #TODO: Check if file image needs to be
@@ -21,17 +20,17 @@ for filename in os.listdir('.'):
         height = int ((SQUARE_FIT_SIZE / width) * height)
         width = SQUARE_FIT_SIZE
     else:
-        width = int((SQUARE_FIT_SIZE / height) *width)
+        width = int((SQUARE_FIT_SIZE / height) * width)
         height = SQUARE_FIT_SIZE
 
 #TODO: Calculate the new width and height to resize to.
-        print('Resizing %s...' % (filename))
-        im = im.resize((width, height))
+    print('Resizing %s...' % (filename))
+    m = im.resize((width, height))
 #TODO: Add the logo.
 
 
-        print('Adding logo to %s...' % (filename))
-        im.paste(logoIM, (width - logoWidth, height - logoHeight), logoIm)
-        im.save(os.path.join('withLogo', filename))
+    print('Adding logo to %s...' % (filename))
+    im.paste(logoIM, (width - logoWidth, height - logoHeight), logoIm)
+    im.save(os.path.join('withLogo', filename))
 #TODO: Save changes.
-        im.save(os.path.join('withLogo', filename))
+ 
